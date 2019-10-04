@@ -10,7 +10,7 @@ int main()
 	Vec3<double> vecDouble;
 	assert(vecDouble.x == 0.0);
 	vecDouble.z = 9;
-	assert(vecDouble.z == 9.);
+	assert(vecDouble.b == 9.);
 
 	Vec3<int> vec2(8,7,2);
 	assert(vec2.x == 8 && vec2.y == 7 && vec2.z == 2);
@@ -27,4 +27,10 @@ int main()
 
 	double distance = vec2.distance_to(vec1);
 	assert(distance == sqrt(118));
+
+	Vec3<int> sum = vec1 + vec3;
+	assert(sum.x == 10 && sum.y == 10 && sum.z == 12);
+
+	Vec3<int> sum2 = vec2 + 2;
+	assert(sum2.x == 10. && sum2.y == 9. && sum2.z == 4.);
 }
