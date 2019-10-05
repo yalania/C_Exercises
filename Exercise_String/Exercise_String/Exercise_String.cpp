@@ -24,6 +24,6 @@ int main()
 	string4.clear();
 	assert(string4.length() == 0 && !(string4 == string1));
 
-
-	
+	String move(std::move(string4));	
+	String move2 = std::move(move);
 }

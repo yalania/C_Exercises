@@ -1,41 +1,47 @@
 #include "String.h"
+#include <iostream>
 
-String::String(const char * newString) {
-	const char* copyForCountingSize = newString;
+String::String(const char * otherString) {
+	const char* copyForCountingSize = otherString;
 	while (*copyForCountingSize++)
 	{
 		size++;
 	}
+	bufferSize = size + 1;
+	string = new char[bufferSize];
+	std::memcpy(string, otherString, bufferSize);
+}
 
-	string = new char[size + 1];
-	for (size_t i = 0; i <= size ; i++)
-	{
-		string[i] = *newString++;
-	}
+String::String(const String & newString):size(newString.size), bufferSize(size + 1) {
+	string = new char[bufferSize];
+	std::memcpy(string, newString.string, bufferSize);
+}
+
+String::String(String && otherString) {
+	*this = std::move(otherString);
+}
+
+String & String::operator= (String && otherString) {
+	size = otherString.size;
+	bufferSize = otherString.bufferSize;
+	string = otherString.string;
+	otherString.string = nullptr;
+	return *this;
 }
 
 String::~String() {
 	delete[] string;
 }
 
-String::String(const String & newString):size(newString.size) {
-	string = new char[size + 1];
-	for (size_t i = 0; i <= size; i++)
-	{
-		string[i] = newString.string[i];
-	}
-}
 
-String String::operator + (String const & otherString) {
+const String String::operator + (const String  & otherString) {
 	String newString;
 
 	newString.size = size + otherString.size;
-	newString.string = new char[newString.size + 1];
+	newString.bufferSize = (bufferSize + otherString.bufferSize) - 1;
+	newString.string = new char[newString.bufferSize];
 
-	for (size_t i = 0; i < size; i++)
-	{
-		newString.string[i] = string[i];
-	}
+	std::memcpy(newString.string, string, bufferSize - 1);
 	int j = size;
 	for (size_t i = 0; i <= otherString.size; i++)
 	{
@@ -62,7 +68,7 @@ const bool String::operator == (const String & otherString) {
 	return true;
 }
 
-size_t String::length() {
+const size_t String::length() {
 	return size;
 }
 

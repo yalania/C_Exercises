@@ -3,17 +3,20 @@
 class String {
 	char * string = nullptr;
 	size_t size = 0;
+	size_t bufferSize = 0;
 
 public:
 	String() {};
 	String(const char * newString);
-	String(const String & newString);
+	String(const String & otherString);
+	String(String && otherString);
 	~String();
 
-	String operator + (const String & string);
+	const String operator + (const String & string);
 	const bool operator == (const String  & string);
+	String &  operator= (String && otherString);
 
-	size_t length();
+	const size_t length();
 	void clear();
 
 
