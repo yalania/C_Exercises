@@ -14,7 +14,8 @@ public:
 
 	const String operator + (const String & string);
 	const bool operator == (const String  & string);
-	String &  operator= (String && otherString);
+	String & operator= (String && otherString);
+	String & operator= (const String & otherString);
 
 	const size_t length();
 	void clear();

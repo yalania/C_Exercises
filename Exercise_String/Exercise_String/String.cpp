@@ -12,9 +12,8 @@ String::String(const char * otherString) {
 	std::memcpy(string, otherString, bufferSize);
 }
 
-String::String(const String & newString):size(newString.size), bufferSize(size + 1) {
-	string = new char[bufferSize];
-	std::memcpy(string, newString.string, bufferSize);
+String::String(const String & newString){
+	*this = newString;
 }
 
 String::String(String && otherString) {
@@ -26,6 +25,15 @@ String & String::operator= (String && otherString) {
 	bufferSize = otherString.bufferSize;
 	string = otherString.string;
 	otherString.string = nullptr;
+	otherString.bufferSize = 0;
+	otherString.size = 0;
+	return *this;
+}
+String & String::operator= (const String & otherString) {
+	size = otherString.size;
+	bufferSize = otherString.bufferSize;
+	string = new char[bufferSize];
+	std::memcpy(string, otherString.string, bufferSize);
 	return *this;
 }
 
