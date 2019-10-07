@@ -10,7 +10,7 @@ public:
 	String(const char * newString);
 	String(const String & otherString);
 	String(String && otherString);
-	~String();
+	virtual ~String();
 
 	const String operator + (const String & string);
 	const bool operator == (const String  & string);
