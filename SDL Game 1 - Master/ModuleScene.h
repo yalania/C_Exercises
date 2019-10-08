@@ -3,10 +3,10 @@
 #include "Module.h"
 #include "Globals.h"
 
-#include "ModuleTextures.h"
-#include "ModuleRender.h"
-#include "Module.h"
 
+class ModuleRender;
+class ModuleTextures;
+class SDL_Rect;
 
 class ModuleScene : public Module
 {
@@ -22,8 +22,6 @@ private:
 
 	ModuleTextures * moduleTexture;
 	ModuleRender * moduleRender;
-	char * path;
 	int x;
 	int y;
-	SDL_Rect * section;
 };

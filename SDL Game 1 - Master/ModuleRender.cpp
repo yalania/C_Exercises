@@ -40,7 +40,6 @@ bool ModuleRender::Init()
 // Called every draw update
 update_status ModuleRender::Update()
 {
-	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
 	SDL_RenderClear(renderer);
 

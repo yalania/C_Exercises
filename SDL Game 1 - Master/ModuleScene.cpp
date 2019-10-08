@@ -1,6 +1,8 @@
 #include "ModuleScene.h"
-
-
+#include "Application.h"
+#include "SDL/include/SDL.h"
+#include "ModuleTextures.h"
+#include "ModuleRender.h"
 ModuleScene::ModuleScene()  {
 
 
@@ -8,16 +10,22 @@ ModuleScene::ModuleScene()  {
 
 bool ModuleScene::Init() {
 
-	path = "GAME/sprites.png";
 	x = 0;
 	y = 0;
-	section = { x, y, SCREEN_WIDTH, SCREEN_HEIGHT };
+	moduleTexture = App->textures;
+	moduleRender = App->renderer;
 	return true;
 }
 
 update_status ModuleScene::Update() {
 
-	SDL_Texture * loadedtexture = moduleTexture->Load(path);
-	moduleRender->Blit(loadedtexture,x ,y, section);
+	SDL_Rect section;
+	section.x = x;
+	section.y = y;
+	section.w = 32;
+	section.h = 32;
+
+	SDL_Texture * loadedtexture = moduleTexture->Load(SPRITE_FILE);
+	moduleRender->Blit(loadedtexture,x ,y, &section);
 	return UPDATE_CONTINUE;
 }

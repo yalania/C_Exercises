@@ -8,7 +8,7 @@ class ModuleRender;
 class ModuleWindow;
 class ModuleTextures;
 class ModuleInput;
-//class ModuleScene;
+class ModuleScene;
 
 class Application
 {
@@ -28,7 +28,7 @@ public:
 	ModuleWindow* window;
 	ModuleTextures* textures;
 	ModuleInput* input;
-	//ModuleScene* scene;
+	ModuleScene* scene;
 
 private:
 
