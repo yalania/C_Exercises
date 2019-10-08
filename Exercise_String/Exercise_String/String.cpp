@@ -42,7 +42,7 @@ String::~String() {
 }
 
 
-const String String::operator + (const String  & otherString) {
+String String::operator + (const String  & otherString) const{
 	String newString;
 
 	newString.size = size + otherString.size;
@@ -60,7 +60,7 @@ const String String::operator + (const String  & otherString) {
 	return newString;
 }
 
-const bool String::operator == (const String & otherString) {
+bool String::operator == (const String & otherString) const{
 
 	if (size == otherString.size) {
 		for (size_t i = 0; i <= size; i++)
@@ -76,7 +76,7 @@ const bool String::operator == (const String & otherString) {
 	return true;
 }
 
-const size_t String::length() {
+ size_t String::length() const{
 	return size;
 }
 
