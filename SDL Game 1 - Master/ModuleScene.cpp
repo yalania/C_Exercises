@@ -27,6 +27,5 @@ update_status ModuleScene::PreUpdate() {
 
 	SDL_Texture * loadedtexture = moduleTexture->Load(SPRITE_FILE);
 	moduleRender->Blit(loadedtexture,x ,y, &section);
-	LOG("1");
 	return UPDATE_CONTINUE;
 }
