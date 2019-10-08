@@ -10,7 +10,9 @@ ModuleRender::ModuleRender()
 
 // Destructor
 ModuleRender::~ModuleRender()
-{}
+{
+	CleanUp();
+}
 
 // Called before render is available
 bool ModuleRender::Init()

@@ -17,6 +17,7 @@ ModuleTextures::ModuleTextures()
 ModuleTextures::~ModuleTextures()
 {
 	IMG_Quit();
+	CleanUp();
 }
 
 // Called before render is available

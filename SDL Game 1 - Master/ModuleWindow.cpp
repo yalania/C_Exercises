@@ -9,6 +9,7 @@ ModuleWindow::ModuleWindow()
 // Destructor
 ModuleWindow::~ModuleWindow()
 {
+	CleanUp();
 }
 
 // Called before render is available

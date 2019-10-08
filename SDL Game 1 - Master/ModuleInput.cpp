@@ -8,7 +8,9 @@ ModuleInput::ModuleInput()
 
 // Destructor
 ModuleInput::~ModuleInput()
-{}
+{
+	CleanUp();
+}
 
 // Called before render is available
 bool ModuleInput::Init()
