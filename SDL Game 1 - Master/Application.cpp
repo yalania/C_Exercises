@@ -42,7 +42,11 @@ bool Application::Init()
 
 update_status Application::PreUpdate()
 {
-	return UPDATE_CONTINUE;
+	update_status ret = UPDATE_CONTINUE;
+
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+		ret = (*it)->PreUpdate();
+	return ret;
 }
 
 update_status Application::Update()

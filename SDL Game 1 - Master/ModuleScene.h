@@ -6,7 +6,6 @@
 
 class ModuleRender;
 class ModuleTextures;
-class SDL_Rect;
 
 class ModuleScene : public Module
 {
@@ -16,7 +15,7 @@ public:
 	~ModuleScene() {};
 
 	bool Init();
-	update_status Update();
+	update_status PreUpdate();
 
 private:
 

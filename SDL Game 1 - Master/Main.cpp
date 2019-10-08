@@ -51,7 +51,19 @@ int main(int argc, char ** argv)
 
 		case MAIN_UPDATE:
 		{
-			int update_return = App->Update();
+
+			int update_return = App->PreUpdate();
+
+			if (update_return == UPDATE_ERROR)
+			{
+				LOG("Application PreUpdate exits with error -----");
+				state = MAIN_EXIT;
+			}
+
+			if (update_return == UPDATE_STOP)
+				state = MAIN_FINISH;
+
+		    update_return = App->Update();
 
 			if (update_return == UPDATE_ERROR)
 			{
