@@ -12,12 +12,12 @@ public:
 	String(String && otherString);
 	virtual ~String();
 
-	const String operator + (const String & string);
-	const bool operator == (const String  & string);
+    String operator + (const String & string) const;
+	bool operator == (const String  & string) const;
 	String & operator= (String && otherString);
 	String & operator= (const String & otherString);
 
-	const size_t length();
+	size_t length() const;
 	void clear();
 
 

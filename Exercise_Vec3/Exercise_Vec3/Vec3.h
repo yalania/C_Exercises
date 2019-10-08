@@ -13,15 +13,15 @@ public:
 	Vec3(T x, T y, T z) : x(x), y(y), z(z) {}
 	Vec3(const Vec3<T> & vector) :x(vector.x), y(vector.y), z(vector.z){}
 
-	const Vec3<T> operator+ (const Vec3<T> & vector) {
+	 Vec3<T> operator+ (const Vec3<T> & vector) const {
 		return Vec3(vector.x + x, vector.y + y, vector.z + z);
 	}
 
-	const Vec3<T> operator+ (T value) {
+	 Vec3<T> operator+ (T value) const {
 		return Vec3(x + value, y + value, z + value);
 	}
 
-	const Vec3<T> normalize() {
+	Vec3<T> normalize() const {
 		double mod = Vec3::length();
 		T normalizeX = x / mod;
 		T normalizeY = y / mod;
@@ -29,12 +29,12 @@ public:
 		return Vec3(normalizeX, normalizeY, normalizeZ);
 	}
 
-	const double distance_to(const Vec3<T> & vector) {
+    double distance_to(const Vec3<T> & vector) const {
 
 		return sqrt(pow(x - vector.x, 2) + pow(y - vector.y, 2) + pow(z - vector.z, 2));
 	}
 
-	const double length() {
+    double length() const {
 		return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 	}
 
