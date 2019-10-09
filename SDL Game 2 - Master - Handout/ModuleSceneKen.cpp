@@ -22,6 +22,12 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	// TODO 2 : setup the foreground (red ship) with
 	// coordinates x,y,w,h from ken_stage.png
 
+	// foreground / red ship
+	foreground.x = 0;
+	foreground.y = 0;
+	foreground.w = 400;
+	foreground.h = 200;
+
 	// Background / sky
 	background.x = 72;
 	background.y = 208;
@@ -77,6 +83,7 @@ update_status ModuleSceneKen::Update()
 	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 1.0f); // flag animation
 
 	// TODO 3: Draw the ship. Be sure to tweak the speed.
+	App->renderer->Blit(graphics, -10, -25, &foreground, 1.0f);
 
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
 	
