@@ -23,6 +23,7 @@ public:
 	SDL_Rect ground;
 	SDL_Rect background;
 	SDL_Rect foreground;
+	SDL_Rect girl;
 	Animation flag;
 };
 
