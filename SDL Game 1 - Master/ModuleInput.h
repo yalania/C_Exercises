@@ -4,6 +4,7 @@
 
 typedef unsigned __int8 Uint8;
 
+class ModuleAudio;
 class ModuleInput : public Module
 {
 public:
@@ -17,4 +18,5 @@ public:
 
 private:
 	const Uint8 *keyboard = NULL;
+	ModuleAudio * moduleAudio;
 };

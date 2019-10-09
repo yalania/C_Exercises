@@ -28,12 +28,7 @@ bool ModuleAudio::Init() {
 	if (SDL_Init(SDL_INIT_AUDIO) < 0) {
 		ret = false;
 	}
-	ret = load(AUDIO_WAV);
 	return ret;
-
-}
-update_status ModuleAudio::Update(){
-
 
 }
 
@@ -44,11 +39,13 @@ void ModuleAudio::play() {
 
 	SDL_PauseAudio(0);
 
-	while (audio_len > 0) {
+	while (audio_len_copy > 0) {
 		SDL_Delay(100);
 	}
 
 	SDL_CloseAudio();
+	audio_buf_copy = audio_buf;
+	audio_len_copy = audio_len;
 }
 
 

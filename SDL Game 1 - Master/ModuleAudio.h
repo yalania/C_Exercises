@@ -13,7 +13,6 @@ public:
 	};
 
 	bool Init();
-	update_status Update();
 	bool load(const char* file);
 	void play();
 	bool CleanUp();
