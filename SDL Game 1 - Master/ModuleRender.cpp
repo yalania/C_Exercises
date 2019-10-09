@@ -47,10 +47,8 @@ update_status ModuleRender::PreUpdate()
 }
 
 // Called every draw update
-update_status ModuleRender::Update()
+update_status ModuleRender::PostUpdate()
 {
-
-
 	// TODO 5: Now that we have PreUpdate/PostUpdate/Update move things around so we can render :)
 
 	SDL_RenderPresent(renderer);

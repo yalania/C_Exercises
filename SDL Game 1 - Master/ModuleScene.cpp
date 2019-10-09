@@ -10,22 +10,20 @@ ModuleScene::ModuleScene()  {
 
 bool ModuleScene::Init() {
 
-	x = 5;
-	y = 5;
 	moduleTexture = App->textures;
 	moduleRender = App->renderer;
 	return true;
 }
 
-update_status ModuleScene::PreUpdate() {
+update_status ModuleScene::Update() {
 
 	SDL_Rect section;
-	section.x = x;
-	section.y = y;
-	section.w = 32;
-	section.h = 32;
+	section.x = 0;
+	section.y = 0;
+	section.w = 60;
+	section.h = 60;
 
 	SDL_Texture * loadedtexture = moduleTexture->Load(SPRITE_FILE);
-	moduleRender->Blit(loadedtexture,x ,y, &section);
+	moduleRender->Blit(loadedtexture,0 ,0, &section);
 	return UPDATE_CONTINUE;
 }

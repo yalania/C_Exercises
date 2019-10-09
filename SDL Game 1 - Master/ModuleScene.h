@@ -15,12 +15,9 @@ public:
 	~ModuleScene() {};
 
 	bool Init();
-	update_status PreUpdate();
+	update_status Update();
 
 private:
-
 	ModuleTextures * moduleTexture;
 	ModuleRender * moduleRender;
-	int x;
-	int y;
 };

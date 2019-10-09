@@ -73,6 +73,18 @@ int main(int argc, char ** argv)
 
 			if (update_return == UPDATE_STOP)
 				state = MAIN_FINISH;
+
+
+			update_return = App->PostUpdate();
+
+			if (update_return == UPDATE_ERROR)
+			{
+				LOG("Application PostUpdate exits with error -----");
+				state = MAIN_EXIT;
+			}
+
+			if (update_return == UPDATE_STOP)
+				state = MAIN_FINISH;
 		}
 			break;
 
