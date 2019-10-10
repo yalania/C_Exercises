@@ -1,5 +1,4 @@
 #include "String.h"
-#include <iostream>
 
 String::String(const char * otherString) {
 	const char* copyForCountingSize = otherString;
@@ -46,7 +45,7 @@ String String::operator + (const String  & otherString) const{
 	String newString;
 
 	newString.size = size + otherString.size;
-	newString.bufferSize = (bufferSize + otherString.bufferSize) - 1;
+	newString.bufferSize = size + 1;
 	newString.string = new char[newString.bufferSize];
 
 	std::memcpy(newString.string, string, bufferSize - 1);
@@ -81,6 +80,5 @@ bool String::operator == (const String & otherString) const{
 }
 
 void String::clear() {
-	string[0] = '\0';
 	size = 0;
 }
