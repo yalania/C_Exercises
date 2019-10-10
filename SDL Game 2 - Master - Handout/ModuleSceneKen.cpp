@@ -42,10 +42,10 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 
 	// TODO 4: Setup Girl Animation from coordinates from ken_stage.png
 
-	girl.x = 670;
-	girl.y = 15;
-	girl.w = 30;
-	girl.h = 50;
+	girl.x = 625;
+	girl.y = 20;
+	girl.w = 35;
+	girl.h = 55;
 
 }
 
@@ -98,6 +98,7 @@ update_status ModuleSceneKen::Update()
 	App->renderer->Blit(graphics, 0, shipYPos, &foreground, 1.0f);
 
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
+	App->renderer->Blit(graphics, 191, 107.0f + shipYPos, &girl, 1.0f);
 	
 	App->renderer->Blit(graphics, 0, 170, &ground);
 
