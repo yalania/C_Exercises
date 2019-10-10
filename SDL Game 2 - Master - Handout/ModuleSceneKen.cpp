@@ -60,6 +60,7 @@ bool ModuleSceneKen::Start()
 	graphics = App->textures->Load("ken_stage.png");
 
 	// TODO 7: Enable the player module
+	App->player->Enable();
 	// TODO 0: trigger background music
 	
 	//App->audio->PlayMusic("ken.ogg", 0);
