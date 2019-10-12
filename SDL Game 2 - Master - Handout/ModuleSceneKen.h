@@ -23,12 +23,11 @@ public:
 	SDL_Rect ground;
 	SDL_Rect background;
 	SDL_Rect foreground;
-	SDL_Rect girl;
+	Animation girl;
 	Animation flag;
 
 private:
 	float shipYPos = 0;
-	float modificator = 0;
 };
 
 #endif // __MODULESCENEKEN_H__

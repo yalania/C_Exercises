@@ -8,6 +8,7 @@
 #include "ModuleInput.h"
 #include "ModuleAudio.h"
 #include "ModuleFadeToBlack.h"
+
 #include "SDL/include/SDL.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
@@ -24,10 +25,10 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 	// coordinates x,y,w,h from ken_stage.png
 
 	// foreground / red ship
-	foreground.x = 10;
-	foreground.y = 26;
-	foreground.w = 400;
-	foreground.h = 200;
+	foreground.x = 8;
+	foreground.y = 24;
+	foreground.w = 522;
+	foreground.h = 182;
 
 	// Background / sky
 	background.x = 72;
@@ -43,10 +44,11 @@ ModuleSceneKen::ModuleSceneKen(bool start_enabled) : Module(start_enabled)
 
 	// TODO 4: Setup Girl Animation from coordinates from ken_stage.png
 
-	girl.x = 625;
-	girl.y = 20;
-	girl.w = 35;
-	girl.h = 55;
+	girl.frames.push_back({ 625, 16, 32, 56 });
+	girl.frames.push_back({ 625, 80, 32, 56 });
+	girl.frames.push_back({ 625, 144, 32, 56 });
+	girl.speed = 0.08f;
+
 
 }
 
@@ -64,7 +66,7 @@ bool ModuleSceneKen::Start()
 	App->player->Enable();
 	// TODO 0: trigger background music
 	
-	//App->audio->PlayMusic("ken.ogg", 0);
+	App->audio->PlayMusic("ken.ogg", 0);
 	return true;
 }
 
@@ -83,24 +85,18 @@ bool ModuleSceneKen::CleanUp()
 update_status ModuleSceneKen::Update()
 {
 	// TODO 5: make sure the ship goes up and down
-	if (shipYPos >= 0) {
-		modificator = -0.05;
-	}
-	else if (shipYPos <= -3) {
-		modificator = 0.05;
-	}
 
-	shipYPos += modificator;
+	shipYPos += sin(SDL_GetTicks() / 1000) * 0.05f;
 	// Draw everything --------------------------------------
 	// TODO 1: Tweak the movement speed of the sea&sky + flag to your taste
-	App->renderer->Blit(graphics, 0, 0, &background, 1.0f); // sea and sky
-	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 1.0f); // flag animation
+	App->renderer->Blit(graphics, 0, 0, &background, 1.5f); // sea and sky
+	App->renderer->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 1.5f); // flag animation
 
 	// TODO 3: Draw the ship. Be sure to tweak the speed.
-	App->renderer->Blit(graphics, 0, shipYPos, &foreground, 1.0f);
+	App->renderer->Blit(graphics, 0, shipYPos, &foreground, 1.5f);
 
 	// TODO 6: Draw the girl. Make sure it follows the ship movement!
-	App->renderer->Blit(graphics, 191, 107.0f + shipYPos, &girl, 1.0f);
+	App->renderer->Blit(graphics, 191, 104.0f + shipYPos, &(girl.GetCurrentFrame()), 1.5f);
 	
 	App->renderer->Blit(graphics, 0, 170, &ground);
 
