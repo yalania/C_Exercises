@@ -1,5 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
+#include "ModuleSceneHonda.h"
 #include "ModuleSceneKen.h"
 #include "ModuleRender.h"
 #include "ModuleTextures.h"
@@ -108,6 +109,11 @@ update_status ModuleSceneKen::Update()
 
 	// TODO 11: Make that pressing space triggers a switch to honda logic module
 	// using FadeToBlack module
+
+	if(App->input->GetKey(SDL_SCANCODE_SPACE)) {
+		App->fade->FadeToBlack(App->scene_honda, App->scene_ken, 5.0f);
+
+	}
 
 	return UPDATE_CONTINUE;
 }
