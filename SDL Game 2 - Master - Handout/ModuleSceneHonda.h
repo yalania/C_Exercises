@@ -22,13 +22,9 @@ public:
 	SDL_Texture* graphics = nullptr;
 	SDL_Rect ground;
 	SDL_Rect background;
-	SDL_Rect topground;
+	SDL_Rect ceiling;
 	SDL_Rect bath;
 	Animation water;
-
-private:
-	float shipYPos = 0;
-	float modificator = 0;
 };
 
 #endif // __MODULESCENEHONDA_H__

@@ -31,12 +31,12 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 
 	// TODO 8: setup the walk forward animation from ryu4.png
 
-	forward.frames.push_back({ 0, 131, 74, 90 });
-	forward.frames.push_back({ 75, 131, 74, 90 });
-	forward.frames.push_back({ 160, 128, 74, 91 });
-	forward.frames.push_back({ 250, 127, 74, 91 });
-	forward.frames.push_back({ 350, 128, 75, 91 });
-	forward.frames.push_back({ 430, 129, 74, 89 });
+	forward.frames.push_back({ 9, 130, 53, 90 });
+	forward.frames.push_back({ 76, 130, 60, 90 });
+	forward.frames.push_back({ 163, 130, 64, 90 });
+	forward.frames.push_back({ 260, 130, 64, 90 });
+	forward.frames.push_back({ 351, 130, 75, 90 });
+	forward.frames.push_back({ 432, 130, 74, 90 });
 	forward.speed = 0.2f;
 }
 
@@ -82,7 +82,7 @@ update_status ModulePlayer::Update()
 		position.x--;
 	}
 
-	App->renderer->Blit(graphics, position.x, 100, &toPlay->GetCurrentFrame());
+	App->renderer->Blit(graphics, position.x, 120, &toPlay->GetCurrentFrame());
 
 
 	return UPDATE_CONTINUE;

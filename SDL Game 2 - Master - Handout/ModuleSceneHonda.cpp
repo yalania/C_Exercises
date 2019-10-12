@@ -17,29 +17,26 @@ ModuleSceneHonda::ModuleSceneHonda(bool start_enabled) : Module(start_enabled)
 	ground.w = 896;
 	ground.h = 72;
 
-	// TODO 2 : setup the topground (red ship) with
-	// coordinates x,y,w,h from Honda_stage.png
+	// ceiling 
+	ceiling.x = 92;
+	ceiling.y = 8;
+	ceiling.w = 765;
+	ceiling.h = 51;
 
-	// topground / red ship
-	topground.x = 92;
-	topground.y = 8;
-	topground.w = 765;
-	topground.h = 51;
-
-	// Background / sky
+	// Background 
 	background.x = 128;
 	background.y = 128;
 	background.w = 768;
 	background.h = 176;
 
 	// water animation
-	water.frames.push_back({ 848, 208, 40, 40 });
-	water.frames.push_back({ 848, 256, 40, 40 });
-	water.frames.push_back({ 848, 304, 40, 40 });
+	water.frames.push_back({ 8, 450, 288, 20 });
+	water.frames.push_back({ 296, 450, 288, 20 });
+	water.frames.push_back({ 592, 450, 288, 20 });
 	water.speed = 0.08f;
 
-	bath.x = 312;
-	bath.y = 310;
+	bath.x = 160;
+	bath.y = 64;
 	bath.w = 332;
 	bath.h = 60;
 
@@ -53,10 +50,10 @@ bool ModuleSceneHonda::Start()
 {
 	LOG("Loading Honda scene");
 
-	graphics = App->textures->Load("Honda_stage.png");
+	graphics = App->textures->Load("Honda_stage2.png");
 
 	App->player->Enable();
-	//App->audio->PlayMusic("Honda.ogg", 0);
+	App->audio->PlayMusic("Honda.ogg", 0);
 	return true;
 }
 
@@ -77,12 +74,12 @@ update_status ModuleSceneHonda::Update()
 
 	// Draw everything --------------------------------------
 	App->renderer->Blit(graphics, 0, 170, &ground);
-	App->renderer->Blit(graphics, 0, 0, &background, 1.0f); // sea and sky
-	App->renderer->Blit(graphics, -50, 0, &topground, 1.0f);
-	//App->renderer->Blit(graphics, 560, 8, &(water.GetCurrentFrame()), 1.0f); // water animation
+	App->renderer->Blit(graphics, 0, 0, &background, 1.0f);
+	App->renderer->Blit(graphics, -50, 0, &ceiling, 1.0f);
 
 
 	App->renderer->Blit(graphics, 250, 140, &bath, 1.0f);
+	App->renderer->Blit(graphics, 280, 156, &(water.GetCurrentFrame()), 1.0f); // water animation
 
 
 	return UPDATE_CONTINUE;
