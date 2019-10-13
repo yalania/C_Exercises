@@ -6,8 +6,7 @@ This respository contains a bunch of exercises to improvive in C++.
 
 The exercises included are:
 
-- **Vec 3 implementation using templates.
-- **String class implementation
-- **SDL introduction
-- **SDL Street Fighter scene.
-
+- **Vec 3 implementation using templates.**
+- **String class implementation**
+- **SDL introduction**
+- **SDL Street Fighter scene.**
