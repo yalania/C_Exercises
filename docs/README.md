@@ -1,6 +1,6 @@
 ## C Exercises for University
 
-This respository contains a bunch of exercises to improvive in C++.
+This respository contains a bunch of exercises to improve in C++.
 
 ### Exercises
 
